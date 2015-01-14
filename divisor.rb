@@ -1,6 +1,5 @@
 def divisor a
-	return [] if a.empty?
-	a.map { |val| divisor_sum(val) }.uniq
+	a.empty? ? [] : a.map { |val| divisor_sum(val) }.uniq
 end
 
 
