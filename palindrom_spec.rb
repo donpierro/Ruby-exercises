@@ -18,4 +18,5 @@ end
 describe "sum_palindroms" do
   it { expect(10.sum_palindroms).to eql(25) }
   it { expect(5.sum_palindroms).to eql(9) }
+  it { expect(999999.sum_palindroms).to eql(872187) }
 end

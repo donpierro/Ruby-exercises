@@ -1,15 +1,15 @@
 class String
-  def text_palindrom?
+  def palindrom?
     self.reverse == self
   end
 end
 
 class Fixnum
   def palindrom?
-    self < 0 ? false : self.to_s.text_palindrom?
+    self < 0 ? false : self.to_s.palindrom?
   end
   def bin_palindrom?
-    self < 0 ? false : self.to_s(2).text_palindrom?
+    self < 0 ? false : self.to_s(2).palindrom?
   end
   def sum_palindroms
     (1..self).select{ |val| val.palindrom? && val.bin_palindrom? }.inject(:+)
