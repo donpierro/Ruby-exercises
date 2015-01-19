@@ -1,18 +1,18 @@
 require './palindrom.rb'
 
 describe "palindrom?" do
-  it { expect(585.palindrom?).to eql(true) }
-  it { expect(0.palindrom?).to eql(true) }
-  it { expect(998.palindrom?).to eql(false) }
-  it { expect((-1).palindrom?).to eql(false) }
+  it { expect(585.palindrom?).to be true }
+  it { expect(0.palindrom?).to be true }
+  it { expect(998.palindrom?).to be false }
+  it { expect((-1).palindrom?).to be false }
 end
 
 describe "bin_palindrom?" do
-  it { expect(1111.palindrom?).to eql(true) }
-  it { expect(1000.palindrom?).to eql(false) }
-  it { expect(10001.palindrom?).to eql(true) }
-  it { expect(101011.palindrom?).to eql(false) }
-  it { expect(10.palindrom?).to eql(false) }
+  it { expect(1111.palindrom?).to be true }
+  it { expect(1000.palindrom?).to be false  }
+  it { expect(10001.palindrom?).to be true }
+  it { expect(101011.palindrom?).to be false  }
+  it { expect(10.palindrom?).to be false  }
 end
 
 describe "sum_palindroms" do
