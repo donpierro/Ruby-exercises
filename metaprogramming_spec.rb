@@ -1,25 +1,48 @@
 require './metaprogramming.rb'
 
 describe 'Task' do
-  context 'create new task without status in constructor' do
-    it { expect(Task.new.send(:new?)).to be true }
-    it { expect(Task.new.send(:done?)).to be false }
+  context 'create new task' do
+    it 'creates task with default status' do
+      expect(Task.new).to be_new
+    end
+    it 'creates task with open status' do
+      expect(Task.new('open')).to be_open
+    end
   end
 
-  it 'returns true if status is open' do
-    task = Task.new('open')
-    expect(task.open?).to be true
+  context 'change task status' do
+    let!(:task) { Task.new }
+
+    it 'changes task status for open' do
+      task.open!
+      expect(task.status).to eql('open') 
+    end
+    it 'changes task status for done' do
+      task.done!
+      expect(task.status).to eql('done')
+    end
+    it 'changes task status for open' do
+      task = Task.new('open')
+      task.new!
+      expect(task.status).to eql('new') 
+    end
   end
 
-  it 'returns false if status is not done' do
-    task = Task.new('open')
-    task.done!
-    expect(task.open?).to be false
-  end
+  context 'check task status' do
+    let!(:task) { Task.new }
 
-  it 'changes status to open' do
-    task = Task.new('new')
-    task.open!
-    expect(task.open?).to be true
+    it 'checks if status is new' do
+      expect(task).to be_new
+    end
+
+    it 'checks if status is open' do
+      task.open!
+      expect(task).to be_open
+    end
+
+    it 'checks if status is done' do
+      task.done!
+      expect(task).to be_done
+    end
   end
 end

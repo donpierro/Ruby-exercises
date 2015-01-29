@@ -6,9 +6,6 @@ class Task
 
   %w(new open done).each do |method|
     define_method(method + '?') { @status == method ? true : false }
-  end
-
-  %w(new open done).each do |method|
     define_method(method + '!') { @status = method }
   end
 end
