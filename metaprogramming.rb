@@ -5,7 +5,7 @@ class Task
   end
 
   %w(new open done).each do |method|
-    define_method(method + '?') { @status == method ? true : false }
-    define_method(method + '!') { @status = method }
+    define_method(%(#{method}?)) { @status == method ? true : false }
+    define_method(%(#{method}!)) { @status = method }
   end
 end

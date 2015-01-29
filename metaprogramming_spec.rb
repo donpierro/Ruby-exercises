@@ -21,7 +21,7 @@ describe 'Task' do
       task.done!
       expect(task.status).to eql('done')
     end
-    it 'changes task status for open' do
+    it 'changes task status for new' do
       task = Task.new('open')
       task.new!
       expect(task.status).to eql('new') 
