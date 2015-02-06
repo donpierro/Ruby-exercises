@@ -6,20 +6,12 @@ class Student
     @name, @surname, @grade = name, surname, grade
   end
 
-  def about
+  def to_s
     %(#{@name} #{@surname}: #{@grade})
   end
 
   def <=> other
     self.grade <=> other.grade
-  end
-
-  def <=> other
-    self.name <=> other.name
-  end
-
-  def <=> other
-    self.surname <=> other.surname
   end
 end
 
