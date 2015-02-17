@@ -13,16 +13,23 @@ class CompareStringValue < String
 end
 
 class Test
-  def initialize(status)
-    @status = status
+  def initialize(attribute)
+    @attribute = attribute
   end
 
-  def status
-    CompareStringValue.new(@status)
+  def attribute
+    CompareStringValue.new(@attribute)
+  end
+
+  def respond_to_missing?(method_name, include_private = false)
+    @attribute.eql?(method_name[0..-2].to_s)
   end
 end
 
 abc = Test.new("initial")
-puts abc.status.name?
-puts abc.status.initial?
-puts abc.status.s?
+puts abc.attribute.name?
+puts abc.attribute.initial?
+puts abc.attribute.s?
+
+puts abc.respond_to?('initial?')
+puts abc.respond_to?('initialwqwe?')
