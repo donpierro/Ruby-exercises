@@ -1,4 +1,4 @@
-class CompareStringValue < String
+class StringInquirer < String
   def initialize(attribute)
     @attribute = attribute
   end
@@ -12,24 +12,16 @@ class CompareStringValue < String
   end
 end
 
-class Test
+class TestClass
   def initialize(attribute)
     @attribute = attribute
   end
 
   def attribute
-    CompareStringValue.new(@attribute)
+    StringInquirer.new(@attribute)
   end
 
   def respond_to_missing?(method_name, include_private = false)
     @attribute.eql?(method_name[0..-2].to_s)
   end
 end
-
-abc = Test.new("initial")
-puts abc.attribute.name?
-puts abc.attribute.initial?
-puts abc.attribute.s?
-
-puts abc.respond_to?('initial?')
-puts abc.respond_to?('initialwqwe?')
