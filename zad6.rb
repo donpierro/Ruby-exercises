@@ -1,27 +1,15 @@
 class StringInquirer < String
-  def initialize(attribute)
-    @attribute = attribute
+  attr_accessor :data
+
+  def initialize(data)
+    @data = data
   end
 
-  def method_missing(name, *args, &block)
-    if name[-1] != '?'
-      raise NoMethodError, %(undefined method #{name})
-    else
-      name[0..-2].eql?(@attribute)
-    end
-  end
-end
-
-class TestClass
-  def initialize(attribute)
-    @attribute = attribute
-  end
-
-  def attribute
-    StringInquirer.new(@attribute)
+  def method_missing(name)
+    name[-1] != '?' ? super : name[0..-2].eql?(@data)
   end
 
   def respond_to_missing?(method_name, include_private = false)
-    @attribute.eql?(method_name[0..-2].to_s)
+    @data.eql?(method_name[0..-2].to_s)
   end
 end
