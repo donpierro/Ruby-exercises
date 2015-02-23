@@ -2,18 +2,18 @@ require './zad6.rb'
 
 describe 'StringInquirer' do
   context 'method missing' do
-    let!(:test) { StringInquirer.new('initial') }
+    let!(:data) { StringInquirer.new('initial') }
 
     it 'returns true when comparing strings are equal' do
-      expect(test.initial?).to be true
+      expect(data.initial?).to be true
     end
 
     it 'returns false when comparing strings are not equal' do
-      expect(test.example?).to be false
+      expect(data.example?).to be false
     end
 
     it 'raises exception when method have incorrect name' do
-      expect{ test.example }.to raise_error(NoMethodError)
+      expect{ data.example }.to raise_error(NoMethodError)
     end
   end
 
