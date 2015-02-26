@@ -4,7 +4,6 @@ class SendTweet
   def initialize(&block)
     @tweet = ""
     self.instance_eval(&block) if block_given?
-    print @tweet
   end
 
   def text(message)
