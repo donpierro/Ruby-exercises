@@ -7,9 +7,7 @@ end
 
 class Comment < ActiveRecord::Base
   belongs_to :post
-  scope :for_videos, -> { joins(:post).where(posts: { post_type: 'video' }) }
+  delegate :post_type, to: :post, allow_nil: :true
 
-  def post_type
-    post.nil? ? nil : post.post_type
-  end
+  scope :for_videos, -> { joins(:post).merge(Post.where(post_type: 'video')) }
 end

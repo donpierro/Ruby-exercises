@@ -2,7 +2,6 @@ require 'active_record'
 require 'minitest/autorun'
 require 'logger'
 require 'database_cleaner'
-require 'minitest/autorun'
 require 'minitest/around/unit'
 
 Minitest::Test = MiniTest::Unit::TestCase unless defined?(Minitest::Test)
